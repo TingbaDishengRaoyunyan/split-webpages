@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="可自由调整大小的多网页分屏工作台">
+  <title>分屏网页工作台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark">▦</span>
+      <div>
+        <h1>分屏网页工作台</h1>
+        <p>同时查看多个网页，拖动分隔线调整大小</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <button id="addPanelBtn" class="button primary">＋ 添加分屏</button>
+      <button id="layoutBtn" class="button">布局：<span id="layoutLabel">横向</span></button>
+      <button id="resetBtn" class="button ghost">重置</button>
+    </div>
+  </header>
+
+  <main id="workspace" class="workspace layout-horizontal" aria-live="polite"></main>
+  <div id="emptyState" class="empty-state hidden">
+    <div class="empty-icon">▦</div>
+    <h2>还没有分屏</h2>
+    <p>点击“添加分屏”开始使用你的网页工作台。</p>
+    <button id="emptyAddBtn" class="button primary">添加第一个分屏</button>
+  </div>
+
+  <template id="panelTemplate">
+    <section class="panel">
+      <div class="panel-toolbar">
+        <span class="panel-number"></span>
+        <form class="url-form">
+          <label class="sr-only" for="url-input">网页地址</label>
+          <input class="url-input" id="url-input" type="url" placeholder="输入网址，例如 https://example.com" spellcheck="false">
+          <button class="button small" type="submit">加载</button>
+        </form>
+        <button class="icon-button open-button" title="在新标签页打开" aria-label="在新标签页打开">↗</button>
+        <button class="icon-button refresh-button" title="刷新网页" aria-label="刷新网页">↻</button>
+        <button class="icon-button remove-button" title="移除分屏" aria-label="移除分屏">×</button>
+      </div>
+      <div class="frame-wrap">
+        <iframe class="web-frame" title="网页分屏" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="frame-placeholder"><span>请输入网址并点击“加载”</span></div>
+      </div>
+    </section>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
