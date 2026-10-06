@@ -1,2 +1,1 @@
-# split-webpages
-A web app for viewing and resizing multiple webpages side by side.
+一没用的智能体，主要功能为云电脑，每个用户一个。
